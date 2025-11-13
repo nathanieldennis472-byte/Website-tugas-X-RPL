@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head><title>Simulator Arsitektur Von Neumann</title></head>
+    <link rel="stylesheet" href="style.css">
+<body>
+   <center> <h1>Kelompok 1</h1>
+    <p>1.Nathaniel Dennis Y.S</p>
+    <p>2.Bennaya Muhammad Caesar</p>
+    <p>3.Muhammad Azzam Wahyudin</p>
+   <p>4.Muhammad daffa rahmansyah </p>
+    <p>5.Hilmi ahmad sudirman</p>
+    <p>6.Ridho alfarizi</p>
+    </center>  
+    <br><br>
+    <div class="container">
+        <h1>🖥 Simulator Arsitektur Von Neumann</h1>
+
+        <div class="main-layout">
+            <!-- Diagram Area -->
+            <div class="diagram-container">
+                <div class="diagram-wrapper">
+                    <!-- Input Component -->
+                    <div class="component input-comp" id="inputBox">
+                        <div class="comp-title">Input</div>
+                    </div>
+
+                    <!-- CPU Component -->
+                    <div class="component cpu-comp" id="cpuBox">
+                        <div class="cpu-title">Central<br>Processing Unit</div>
+                        <div class="cpu-subunit" id="cuBox">
+                            <strong class="terang">Control Unit</strong>
+                        </div>
+                        <div class="cpu-subunit" id="aluBox">
+                            <strong class="terang">Logic Unit</strong>
+                        </div>
+                    </div>
+
+                    <!-- Output Component -->
+                    <div class="component output-comp" id="outputBox">
+                        <div class="comp-title">Output</div>
+                    </div>
+
+                    <!-- Memory Component -->
+                    <div class="component memory-comp" id="memBox">
+                        <div class="comp-title">Memory</div>
+                    </div>
+
+                    <!-- Connection Lines -->
+                    <div class="line line-h line1" id="line1"></div>
+                    <div class="line line-h line2" id="line2"></div>
+                    <div class="line line-v line3" id="line3"></div>
+                    <div class="line line-v line4" id="line4"></div>
+
+                    <!-- Arrow Heads -->
+                    <div class="arrow-head arrow-right arr1" id="arr1"></div>
+                    <div class="arrow-head arrow-right arr2" id="arr2"></div>
+                    <div class="arrow-head arrow-down arr3" id="arr3"></div>
+                    <div class="arrow-head arrow-up arr4" id="arr4"></div>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="section">
+                    <div class="buttons">
+                        <button class="btn-reset" onclick="reset()">🔄 Reset</button>
+                        <button class="btn-run" id="runBtn" onclick="toggleRun()">▶ Run</button>
+                        <button class="btn-step" id="stepBtn" onclick="step()">⏭ Step</button>
+                    </div>
+                    <div class="status-box" id="status">IDLE</div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">CPU Registers</div>
+                    <div class="registers">
+                        <div class="register">
+                            <div class="reg-label">PC</div>
+                            <div class="reg-value" id="pc">0</div>
+                        </div>
+                        <div class="register">
+                            <div class="reg-label">ACC</div>
+                            <div class="reg-value" id="acc">0</div>
+                        </div>
+                        <div class="register">
+                            <div class="reg-label">IR</div>
+                            <div class="reg-value" id="ir">-</div>
+                        </div>
+                        <div class="register">
+                            <div class="reg-label">MAR</div>
+                            <div class="reg-value" id="mar">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Memory (16 alamat pertama)</div>
+                    <div class="memory-list" id="memList"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Output</div>
+                    <div class="output-area" id="outArea">Belum ada output...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code Editor -->
+        <div class="code-section">
+            <div class="section-title">💻 Program Code</div>
+            <textarea id="code">LOAD 100
+ADD 101
+STORE 102
+OUT
+DATA 100 15
+DATA 101 27</textarea>
+            <div class="help-text">
+                <strong>Instruksi:</strong> LOAD alamat | STORE alamat | ADD alamat | SUB alamat | OUT | HALT | JMP
+                alamat | JZ alamat<br>
+                <strong>Data:</strong> DATA alamat nilai
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+<footer>
+    <p>Pencet ini jika ingin melihat foto</p>
+<button id="exploreBtn" class="botton"><a href="foto.html" class="explore">Explore More</a></button>
+</footer>
+</body>
+</html>

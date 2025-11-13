@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore More - EcoNova City</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bank+Gothic+Light&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Bank Gothic Light', sans-serif;
+      background: radial-gradient(circle at top, #001a1a, #000);
+      color: #eaffef;
+      overflow-x: hidden;
+    }
+
+    .explore-container {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    canvas#particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .explore-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .glow-text {
+      font-size: 2.8rem;
+      color: #00ff9d;
+      text-shadow: 0 0 10px #00ffaa, 0 0 30px #00ffcc;
+      letter-spacing: 2px;
+      animation: glowPulse 2.5s infinite alternate;
+    }
+
+  .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 25px;
+  padding: 12px 20px;
+  background: radial-gradient(1200px 600px at 10% 20%, rgba(0,255,178,0.03), transparent),
+              linear-gradient(180deg,#06dfb7 0%, #09a4a4 50%, #0ac846 100%);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.back-btn::before {
+  content: "←";
+  display: inline-block;
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
+}
+
+.back-btn:hover::before {
+  transform: translateX(-5px);
+}
+
+.back-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 136, 255, 0.3);
+  background: radial-gradient(1200px 600px at 10% 20%, rgba(0,255,178,0.03), transparent),
+              linear-gradient(180deg,#06df64 0%, #09a4a4 50%, #0ac846 100%);
+}
+
+.back-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75px;
+  width: 50px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+}
+
+.back-btn:hover::after {
+  left: 130%;
+}
+
+
+    .desc {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #b7fbe0;
+      margin-top: 10px;
+      animation: fadeIn 2s ease;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .foto {
+    width: 550px;
+    height: 450px;
+}
+
+
+    .card {
+      background: rgba(0, 30, 20, 0.8);
+      border: 1px solid #00ff99;
+      border-radius: 20px;
+      padding: 1.5rem;
+      width: 600px;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 10px #00ff99, inset 0 0 10px #004d33;
+    }
+
+    .card:hover {
+      transform: scale(1.08) rotateY(10deg);
+      box-shadow: 0 0 25px #00ffcc, 0 0 60px #00ffaa;
+    }
+
+    .card h2 {
+      color: #00ffb3;
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+      color: #d6ffe8;
+      font-size: 0.95rem;
+    }
+
+    [data-animate="fade"] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    [data-animate="fade"].active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animations */
+    @keyframes glowPulse {
+      from {
+        text-shadow: 0 0 10px #00ffaa, 0 0 30px #00ffaa;
+      }
+      to {
+        text-shadow: 0 0 25px #00ffcc, 0 0 60px #00ffee;
+      }
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Parallax Effect */
+    .parallax {
+      transition: transform 0.1s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div>
+ <a href="index.html" class="back-btn">Back</a>
+  <div class="explore-container">
+    <canvas id="particles"></canvas>
+
+    <section class="explore-content parallax" data-animate="fade">
+      <h1 class="glow-text"></h1>
+      <p class="desc">
+      </p>
+
+      <div class="cards">
+        <div class="card parallax">
+            <img src="WhatsApp Image 2025-11-13 at 13.52.55_4d675e6c.jpg" class="foto">
+        </div>
+        <div class="card parallax">
+         <img src="WhatsApp Image 2025-11-13 at 13.53.12_846f424f.jpg" class="foto">
+        </div>
+        <div class="card parallax">
+           <img src="WhatsApp Image 2025-11-13 at 13.54.07_daf8252f.jpg" class="foto">
+        </div>
+         <div class="card parallax">  <img src="WhatsApp Image 2025-11-13 at 13.55.15_8c250db6.jpg" class="foto"></div>
+          <div class="card parallax"> <img src="WhatsApp Image 2025-11-13 at 13.55.15_a9ca1826.jpg" class="foto"></div>
+             <div class="card parallax"><img src="WhatsApp Image 2025-11-13 at 13.55.25_1462ad7c.jpg" class="foto"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Scroll-triggered animation
+    window.addEventListener("scroll", () => {
+      document.querySelectorAll("[data-animate='fade']").forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    });
+
+    // Particle background
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let particlesArray;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      init();
+    });
+
+    class Particle {
+      constructor(x, y, size, speedX, speedY) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.speedX = speedX;
+        this.speedY = speedY;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+        if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = "rgba(0,255,160,0.7)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      for (let i = 0; i < 100; i++) {
+        const size = Math.random() * 3 + 1;
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const speedX = (Math.random() - 0.5) * 1.5;
+        const speedY = (Math.random() - 0.5) * 1.5;
+        particlesArray.push(new Particle(x, y, size, speedX, speedY));
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particlesArray.forEach((p) => {
+        p.update();
+        p.draw();
+      });
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+
+    function connectParticles() {
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+          const dx = particlesArray[a].x - particlesArray[b].x;
+          const dy = particlesArray[a].y - particlesArray[b].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 100) {
+            ctx.strokeStyle = `rgba(0,255,160,${1 - distance / 100})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // Parallax movement with mouse
+    document.addEventListener("mousemove", (e) => {
+      document.querySelectorAll(".parallax").forEach((layer) => {
+        const speed = layer.getAttribute("data-speed") || 30;
+        const x = (window.innerWidth / 2 - e.pageX) / speed;
+        const y = (window.innerHeight / 2 - e.pageY) / speed;
+        layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
+      });
+    });
+
+    init();
+    animate();
+  </script>
+  </div>
+</body>
+</html>
